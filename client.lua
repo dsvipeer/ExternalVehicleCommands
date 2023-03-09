@@ -25,18 +25,26 @@ RegisterCommand("trunk", function(source, args, raw)
 
     if IsPedInAnyVehicle(ped, false) then
         if GetVehicleDoorAngleRatio(veh, door) > 0 then
+            TaskPlayAnimAdvanced(ped, "anim@heists@fleeca_bank@scope_out@return_case", "trevor_action", GetEntityCoords(ped), 0, 0, GetEntityHeading(ped), 4.0, -4.0, -1, 49, 0.25, 0.0, 0, 0)
+            Citizen.Wait(1600) -- wait for the animation to finish
             SetVehicleDoorShut(veh, door, false)
             ShowInfo("[Vehicle] ~g~Trunk Closed.")
-        else	
+        else
+            TaskPlayAnimAdvanced(ped, "anim_heist@hs3f@ig14_open_car_trunk@male@", "open_trunk_rushed", GetEntityCoords(ped), 0, 0, GetEntityHeading(ped), 4.0, -4.0, -1, 49, 0.25, 0.0, 0, 0)
+            Citizen.Wait(1600) -- wait for the animation to finish
             SetVehicleDoorOpen(veh, door, false, false)
             ShowInfo("[Vehicle] ~g~Trunk Opened.")
         end
     else
         if distanceToVeh < 6 then
             if GetVehicleDoorAngleRatio(vehLast, door) > 0 then
+                TaskPlayAnimAdvanced(ped, "anim@heists@fleeca_bank@scope_out@return_case", "trevor_action", GetEntityCoords(ped), 0, 0, GetEntityHeading(ped), 4.0, -4.0, -1, 49, 0.25, 0.0, 0, 0)
+                Citizen.Wait(1600) -- wait for the animation to finish
                 SetVehicleDoorShut(vehLast, door, false)
                 ShowInfo("[Vehicle] ~g~Trunk Closed.")
             else
+                TaskPlayAnimAdvanced(ped, "anim_heist@hs3f@ig14_open_car_trunk@male@", "open_trunk_rushed", GetEntityCoords(ped), 0, 0, GetEntityHeading(ped), 4.0, -4.0, -1, 49, 0.25, 0.0, 0, 0)
+                Citizen.Wait(1600) -- wait for the animation to finish
                 SetVehicleDoorOpen(vehLast, door, false, false)
                 ShowInfo("[Vehicle] ~g~Trunk Opened.")
             end
@@ -44,7 +52,10 @@ RegisterCommand("trunk", function(source, args, raw)
             ShowInfo("[Vehicle] ~y~Too far away from vehicle.")
         end
     end
-end)
+    ClearPedTasksImmediately(ped)
+end, false)
+
+
 
 RegisterCommand("hood", function(source, args, raw)
     local ped = GetPlayerPed(-1)
