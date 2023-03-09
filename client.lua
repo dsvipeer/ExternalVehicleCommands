@@ -10,6 +10,21 @@ togKey = 38 -- E
 
 --- Code ---
 
+local animDicts = {
+    "anim_heist@hs3f@ig14_open_car_trunk@male@",
+    "anim@heists@fleeca_bank@scope_out@return_case"
+}
+
+Citizen.CreateThread(function()
+    for i = 1, #animDicts do
+        RequestAnimDict(animDicts[i])
+        while not HasAnimDictLoaded(animDicts[i]) do
+            Citizen.Wait(0)
+        end
+    end
+end)
+
+
 function ShowInfo(text)
 	BeginTextCommandThefeedPost("STRING")
 	AddTextComponentSubstringPlayerName(text)
