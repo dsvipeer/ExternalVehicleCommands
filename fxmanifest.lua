@@ -1,19 +1,14 @@
---------------------------------
--- VehicleCmds, Made by FAXES --
---------------------------------
+--********************************************************************************--
+--*                                                                              *--
+--*                      MFPD-VehicleCommands by MajorFivePD                     *--
+--*                                                                              *--
+--********************************************************************************--
 
---[[    
-    HELPFUL LINKS:
-    - Docs: https://docs.faxes.zone
-    - FAXES Discord: http://faxes.zone/discord
-    - Github: https://github.com/FAXES
---]]
-
-fx_version 'bodacious'
+fx_version 'cerulean'
 game 'gta5'
 
-author 'FAXES/Astra'
-description 'Cool car commands'
+
 
 client_script 'client.lua'
--- server_script 'server.lua'
+
+server_script 'server.lua'
